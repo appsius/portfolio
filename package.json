@@ -1,7 +1,7 @@
 {
-  "name": "podern_portholio_16.06",
+  "name": "portfolio_16.06",
   "version": "1.0.0",
-  "description": "my portpholio",
+  "description": "my personal portfolio",
   "main": "index.js",
   "scripts": {
     "sass": "node-sass -w scss/ -o dist/css/ --recursive"
@@ -9,6 +9,6 @@
   "author": "ilyas ustunkaya",
   "license": "MIT",
   "dependencies": {
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.14.1"
   }
 }
