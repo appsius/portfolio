@@ -1,14 +1,21 @@
+const contact = document.getElementById('contact');
 const menuBtn = document.querySelector('.menu-btn');
 const menu = document.querySelector('.menu');
 const menuNav = document.querySelector('.menu-nav');
 const menuBranding = document.querySelector('.menu-branding');
-
 const navItems = document.querySelectorAll('.nav-item');
+const contactEmail = document.getElementById('contact-email');
+const contactPhone = document.getElementById('contact-phone');
+const contactAddress = document.getElementById('contact-address');
+const alertDiv = document.getElementById('alert');
 
 // Set the Initial State of Menu
 let showMenu = false;
 
 menuBtn.addEventListener('click', toggleMenu);
+// contactEmail.addEventListener('click', copyToClipboard);
+// contactPhone.addEventListener('click', copyToClipboard);
+// contactAddress.addEventListener('click', copyToClipboard);
 
 function toggleMenu() {
   if (!showMenu) {
@@ -30,4 +37,42 @@ function toggleMenu() {
     //Reset Menu State
     showMenu = false;
   }
+}
+
+const contactElements = [contactEmail, contactPhone, contactAddress];
+
+contactEmail.onclick = function () {
+  document.execCommand('copy');
+};
+contactPhone.onclick = function () {
+  document.execCommand('copy');
+};
+contactAddress.onclick = function () {
+  document.execCommand('copy');
+};
+
+addEventCopy(contactEmail);
+addEventCopy(contactPhone);
+addEventCopy(contactAddress);
+
+function addEventCopy(el) {
+  el.addEventListener(
+    'copy',
+    function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const copiedElement = el.childNodes[2].nodeValue;
+      const copiedElementTitle = el.childNodes[1].outerText.replace(/:/g, '');
+      event.clipboardData.setData('text/plain', copiedElement);
+
+      alertDiv.innerText = `${copiedElementTitle} copied to clipboard`;
+      alertDiv.style.display = 'flex';
+
+      setTimeout(() => {
+        alertDiv.style.display = 'none';
+      }, 1500);
+    },
+    true
+  );
 }
