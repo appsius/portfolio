@@ -1,6 +1,6 @@
 # portfolio
 
-## website: https://appsius.netlify.app
+## website: https://freelancerdiary.net
 
 ## under portfolio folder
 
